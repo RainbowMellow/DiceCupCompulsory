@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GUI.History.HistoryActivity"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/llHistory"
+        android:layout_width="420dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal"
+        android:background="@color/lightgrey"
+        android:foreground="@drawable/history_background_border">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llOptions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_toEndOf="@+id/llHistory"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:onClick="onClickClear"
+            android:backgroundTint="@color/blue"
+            android:text="@string/clear"
+            android:layout_marginBottom="25dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:src="@drawable/back"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="25dp"
+            android:onClick="onClickBack"/>
+    </LinearLayout>
+</RelativeLayout>
