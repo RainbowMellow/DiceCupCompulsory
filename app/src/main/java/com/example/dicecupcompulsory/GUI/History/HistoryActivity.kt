@@ -14,8 +14,9 @@ import com.example.dicecupcompulsory.Model.RecycleAdapter
 class HistoryActivity : AppCompatActivity() {
 
     var diceList = ArrayList<BEDiceRoll>()
-    var isClear : Boolean = false
     lateinit var diceAdapter : RecycleAdapter
+
+    var isClear : Boolean = false
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putSerializable("history", diceList)
@@ -51,10 +52,10 @@ class HistoryActivity : AppCompatActivity() {
 
         //Adding the lines in between the rows
         recycler.addItemDecoration(
-            DividerItemDecoration(
-                this,
-                DividerItemDecoration.VERTICAL
-            )
+                DividerItemDecoration(
+                        this,
+                        DividerItemDecoration.VERTICAL
+                )
         )
 
         //Sets the items in the recycler to have a fixed size
@@ -65,6 +66,8 @@ class HistoryActivity : AppCompatActivity() {
 
     }
 
+    //Checks if the list has been cleared, and sends that information
+    //and the user back to the DiceRollActivity
     fun onClickBack(view: View)
     {
         if(isClear)
@@ -76,6 +79,7 @@ class HistoryActivity : AppCompatActivity() {
         finish()
     }
 
+    //Clears the history list
     fun onClickClear(view: View) {
         diceList.clear()
         diceAdapter.clearList()

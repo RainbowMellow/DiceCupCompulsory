@@ -25,6 +25,7 @@ class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Ad
     var diceRollList = ArrayList<BEDiceRoll>()
 
     init {
+        //Reverses list so we get the newest rolls at the top of the view
         val list = dices.reversed()
 
         if(list.isNotEmpty())
@@ -40,7 +41,7 @@ class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Ad
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiceViewHolder {
         // Inflating R.layout.name_item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.history_cell, parent, false)
+                .inflate(R.layout.history_cell, parent, false)
         return DiceViewHolder(view)
     }
 
@@ -48,21 +49,20 @@ class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Ad
         // Getting element from friend list at this position
         val element = diceRollList[position]
 
+        //Background colors of the list
         val colours = intArrayOf(
                 Color.parseColor("#E3E3E3"),
                 Color.parseColor("#CCCCCC")
         )
 
         // Updating the text of the views in the cell view with this elements info
-
         val time: String = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(element.date) + ": "
-
         holder.txtDate.text = time
 
+        //Gets the amount of dice pictures should be shown in each cell
         val amountOfDices = diceRollList[position].diceNumber.size-1
-        println(amountOfDices)
 
-
+        //Removes all pictures in the gridlayout and sets them
         holder.gridLayout.removeAllViews()
 
         for (i in 0..amountOfDices) {
@@ -70,18 +70,16 @@ class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Ad
 
             val lp = LinearLayout.LayoutParams(100, 100)
             lp.setMargins(2,0,2,0)
-
             imgView.layoutParams = lp
 
             val picture = diceRollList[position].diceNumber[i]
 
             imgView.setBackgroundResource(dicePictures[picture])
 
-            //imgView.scaleType = ImageView.ScaleType.CENTER
             holder.gridLayout.addView(imgView)
         }
 
-
+        //Sets the background colors
         holder.itemView.setBackgroundColor(colours[position % colours.size])
     }
 
@@ -95,6 +93,7 @@ class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Ad
         val gridLayout = itemView.findViewById(R.id.glDices) as GridLayout
     }
 
+    //Clears the list that is shown in the recycler
     fun clearList()
     {
         diceRollList.clear()
