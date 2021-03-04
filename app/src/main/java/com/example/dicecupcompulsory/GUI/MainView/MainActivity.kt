@@ -12,11 +12,9 @@ import kotlinx.android.synthetic.main.main_layout.*
 class MainActivity : AppCompatActivity() {
 
     var isFiveChecked = true
-    var hasClickedYahtzee = false
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putBoolean("isFiveChecked", isFiveChecked)
-        outState.putBoolean("hasClickedYahtzee", hasClickedYahtzee)
 
         super.onSaveInstanceState(outState)
     }
@@ -27,13 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState != null) {
             val isFirstChecked = savedInstanceState.getBoolean("isFiveChecked")
-            val hasClicked = savedInstanceState.getBoolean("hasClickedYahtzee")
-
-            if(hasClicked)
-            {
-                llYahtzeeOptions.visibility = View.VISIBLE
-                hasClickedYahtzee = true
-            }
 
             if(isFirstChecked)
             {
@@ -58,12 +49,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //Shows the Yahtzee options
-    fun onClickYahtzeeDiceCup(view: View) {
-        llYahtzeeOptions.visibility = View.VISIBLE
-        hasClickedYahtzee = true
-    }
-
     //Takes the options and sends them and the user to the YahtzeeActivity
     fun onClickPlay(view: View) {
         val intent = Intent(this, YahtzeeActivity::class.java)
@@ -80,8 +65,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         startActivity(intent)
-
-        llYahtzeeOptions.visibility = View.INVISIBLE
     }
 
 }

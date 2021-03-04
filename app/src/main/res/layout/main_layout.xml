@@ -99,24 +99,13 @@
                 android:textSize="17sp"
                 android:gravity="center"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yahtzeeBtn"
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/blue"
-                android:onClick="onClickYahtzeeDiceCup"
-                android:layout_marginTop="15dp"/>
-
             <LinearLayout
                 android:id="@+id/llYahtzeeOptions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:visibility="invisible">
+                android:gravity="center">
 
                 <RadioGroup
                     android:layout_width="wrap_content"
@@ -149,10 +138,10 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/playbtn"
+                    android:text="@string/yahtzeeBtn"
                     android:textSize="15sp"
                     android:textColor="@color/white"
-                    android:backgroundTint="@color/darkblue"
+                    android:backgroundTint="@color/blue"
                     android:onClick="onClickPlay"/>
 
             </LinearLayout>
