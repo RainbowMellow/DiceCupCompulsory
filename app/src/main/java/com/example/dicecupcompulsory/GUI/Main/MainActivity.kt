@@ -33,12 +33,14 @@ class MainActivity : AppCompatActivity() {
     var playerOne = BEPlayer("Player1", "color")
     var playerTwo = BEPlayer("Player2", "color")
     var currentPlayer = playerOne
+    var isInUse : Boolean = false
 
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putSerializable("history", history)
         outState.putInt("totalDices", totalDices)
         outState.putIntegerArrayList("currentDices", currentDices)
+        outState.putSerializable("currentPlayer", currentPlayer)
 
         super.onSaveInstanceState(outState)
     }
@@ -51,17 +53,40 @@ class MainActivity : AppCompatActivity() {
             val totalDicesNew = savedInstanceState.getInt("totalDices")
             val historyList = savedInstanceState.getSerializable("history") as ArrayList<BEDiceRoll>
             val currentDicesList = savedInstanceState.getIntegerArrayList("currentDices") as ArrayList<Int>
+            val current = savedInstanceState.getSerializable("currentPlayer") as BEPlayer
+
+            isInUse = true
 
             history = historyList
             totalDices = totalDicesNew
             currentDices = currentDicesList
+            currentPlayer = current
+
 
             //Makes the dices show the dices that were last rolled.
             createDices(totalDices, currentDices)
 
+            val playerText = "Your turn " + currentPlayer.name + "!"
+            tvPlayerText.text = playerText
+
             updateDiceCount()
         }
-        else if (intent.extras != null) {
+        else
+        {
+            isInUse = false
+
+            //Sets the first dices
+            for (i in 1..totalDices)
+            {
+                currentDices.add(1)
+            }
+
+            createDices(totalDices, firstList)
+
+            updateDiceCount()
+        }
+
+        if (intent.extras != null) {
             val extras: Bundle = intent.extras!!
             val players = extras.getBoolean("hasPlayers")
 
@@ -76,13 +101,20 @@ class MainActivity : AppCompatActivity() {
                 playerOne = firstPlayer
                 playerTwo = secondPlayer
 
-                if(playerOneStarts)
+                if(!isInUse)
                 {
-                    currentPlayer = playerOne
+                    if(playerOneStarts)
+                    {
+                        currentPlayer = playerOne
+                    }
+                    else if(!playerOneStarts)
+                    {
+                        currentPlayer = playerTwo
+                    }
                 }
-                else if(!playerOneStarts)
+                else if(!isInUse)
                 {
-                    currentPlayer = playerTwo
+
                 }
 
                 val playerText = "Your turn " + currentPlayer.name + "!"
@@ -98,15 +130,7 @@ class MainActivity : AppCompatActivity() {
                 tvPlayerText.visibility = View.INVISIBLE
             }
         }
-        //Sets the first dices
-        for (i in 1..totalDices)
-        {
-            currentDices.add(1)
-        }
 
-        createDices(totalDices, firstList)
-
-        updateDiceCount()
     }
 
     //Takes an amount and a list of indexes for the picture list and adds them to the main gridlayout
@@ -190,11 +214,12 @@ class MainActivity : AppCompatActivity() {
             history.add(diceRoll)
         }
 
-        if(currentPlayer == playerOne)
+
+        if(currentPlayer.name == playerOne.name)
         {
             currentPlayer = playerTwo
         }
-        else if(currentPlayer == playerTwo)
+        else if(currentPlayer.name == playerTwo.name)
         {
             currentPlayer = playerOne
         }

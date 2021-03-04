@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="@string/welcome"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"/>
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="@string/playersOrNot"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <RadioGroup
@@ -67,15 +69,15 @@
 
     <Button
         android:id="@+id/btnPlay"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/play"
         android:textSize="20sp"
         android:layout_below="@+id/llPlayersOrNot"
         android:layout_centerHorizontal="true"
         android:onClick="onClickPlay"
         android:backgroundTint="@color/blue"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="40dp"/>
 
     <LinearLayout
         android:id="@+id/llPlayerInfo"
@@ -132,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/two"
                 android:textStyle="bold"
-                android:textColor="@color/purple"
+                android:textColor="@color/pink"
                 android:textSize="20sp" />
 
             <EditText

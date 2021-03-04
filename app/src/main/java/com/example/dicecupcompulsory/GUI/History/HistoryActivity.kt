@@ -22,6 +22,7 @@ class HistoryActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putSerializable("history", diceList)
         outState.putBoolean("isClear", isClear)
+        outState.putBoolean("hasPlayers", hasPlayers)
 
         super.onSaveInstanceState(outState)
     }
@@ -33,9 +34,11 @@ class HistoryActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             val isCleared = savedInstanceState.getBoolean("isClear")
             val historyList = savedInstanceState.getSerializable("history") as ArrayList<BEDiceRoll>
+            val players = savedInstanceState.getBoolean("hasPlayers")
 
             diceList = historyList
             isClear = isCleared
+            hasPlayers = players
         }
 
         else if (intent.extras != null) {

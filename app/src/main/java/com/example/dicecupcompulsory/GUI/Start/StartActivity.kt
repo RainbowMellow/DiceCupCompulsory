@@ -67,7 +67,7 @@ class StartActivity : AppCompatActivity(){
             {
                 nameTwo = "Player 2"
             }
-            val playerTwo = BEPlayer(nameTwo, "#8000FF")
+            val playerTwo = BEPlayer(nameTwo, "#FF6EF8")
 
             intent.putExtra("playerOne", playerOne as Serializable)
             intent.putExtra("playerTwo", playerTwo as Serializable)
@@ -106,7 +106,7 @@ class StartActivity : AppCompatActivity(){
         val btnLayout = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT)
         btnLayout.addRule(RelativeLayout.BELOW, llPlayersOrNot.id)
         btnLayout.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        layout.topMargin = 20
+        btnLayout.topMargin = 40
         btnPlay.layoutParams = btnLayout
     }
 
