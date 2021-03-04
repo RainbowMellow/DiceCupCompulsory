@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GUI.MainView.MainActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvWelcome"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:background="@drawable/background_border_noroundcorners"
+            android:layout_marginEnd="50dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/normal"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/normal2"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/normalBtn"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/blue"
+                android:onClick="onClickNormalDiceCup"
+                android:layout_marginTop="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/background_border_noroundcorners">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yahtzee"
+                android:textColor="@color/darkblue"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yahtzee2"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/yahtzee3"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:gravity="center"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yahtzeeBtn"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/blue"
+                android:onClick="onClickYahtzeeDiceCup"
+                android:layout_marginTop="15dp"/>
+
+            <LinearLayout
+                android:id="@+id/llYahtzeeOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:visibility="invisible">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbFiveDices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dicefive"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/darkblue"
+                        android:buttonTint="@color/darkblue"
+                        android:layout_marginEnd="30dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rbSixDices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dicesix"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:buttonTint="@color/darkblue"
+                        android:textColor="@color/darkblue"/>
+
+                </RadioGroup>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/playbtn"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/darkblue"
+                    android:onClick="onClickPlay"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

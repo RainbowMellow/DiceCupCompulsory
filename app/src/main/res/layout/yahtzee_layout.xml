@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GUI.YatzyDiceCup.Yatzy.YahtzeeActivity"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/back"
+        android:onClick="onClickBack"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"/>
+
+    <GridLayout
+        android:id="@+id/glDices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnBack"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:layout_marginTop="20dp">
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/glSavedDices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_above="@+id/llButtons"
+        android:layout_centerHorizontal="true"/>
+
+
+    <LinearLayout
+        android:id="@+id/llButtons"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnRoll"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="@string/roll"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"
+            android:onClick="onClickRoll"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="@string/reset"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/darkblue"
+            android:onClick="onClickReset"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+</RelativeLayout>

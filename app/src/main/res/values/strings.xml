@@ -3,4 +3,17 @@
     <string name="clear">Clear</string>
     <string name="roll">Roll</string>
     <string name="timeText">Time</string>
+    <string name="reset">Reset</string>
+    <string name="back">Back</string>
+    <string name="welcome">Welcome to the Dice App!</string>
+    <string name="normal">Normal Dice Cup with History</string>
+    <string name="normal2">Roll from 1-6 dices</string>
+    <string name="normalBtn">Go to dice cup</string>
+    <string name="yahtzeeBtn">Go to yahtzee</string>
+    <string name="yahtzee">Yahtzee Dice Cup</string>
+    <string name="yahtzee2">Roll 5 or 6 dices</string>
+    <string name="yahtzee3">You get 3 rolls, and can save dices between them by clicking on them</string>
+    <string name="dicefive">5 Dices</string>
+    <string name="dicesix">6 Dices</string>
+    <string name="playbtn">Play</string>
 </resources>

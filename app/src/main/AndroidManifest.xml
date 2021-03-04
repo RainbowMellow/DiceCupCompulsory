@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiceCupCompulsory">
-        <activity android:name=".GUI.Main.MainActivity">
+        <activity android:name=".GUI.MainView.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GUI.History.HistoryActivity"/>
+        <activity android:name=".GUI.NormalDiceCup.History.HistoryActivity"/>
+        <activity android:name=".GUI.YatzyDiceCup.Yatzy.YahtzeeActivity"/>
+        <activity android:name=".GUI.NormalDiceCup.Main.DiceRollActivity"/>
     </application>
 
 </manifest>
