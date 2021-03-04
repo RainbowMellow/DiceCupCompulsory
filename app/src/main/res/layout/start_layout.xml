@@ -67,7 +67,7 @@
 
     <Button
         android:id="@+id/btnPlay"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="60dp"
         android:text="@string/play"
         android:textSize="20sp"
