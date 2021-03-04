@@ -8,6 +8,18 @@
     android:background="@color/white">
 
     <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/back"
+        android:onClick="onClickBack"
+        android:backgroundTint="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"/>
+
+    <ImageButton
         android:id="@+id/btnHistory"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -18,6 +30,16 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"/>
+
+    <TextView
+        android:id="@+id/tvPlayerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player"
+        android:textSize="25sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
 
     <GridLayout
         android:id="@+id/glDices"

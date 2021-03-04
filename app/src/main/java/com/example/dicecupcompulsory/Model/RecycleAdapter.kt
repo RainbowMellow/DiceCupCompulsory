@@ -17,7 +17,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Adapter<RecycleAdapter.DiceViewHolder>() {
+class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>, var hasPlayers: Boolean) : RecyclerView.Adapter<RecycleAdapter.DiceViewHolder>() {
 
     val dicePictures = arrayOf(0, R.drawable.dice1, R.drawable.dice2, R.drawable.dice3,
             R.drawable.dice4, R.drawable.dice5, R.drawable.dice6)
@@ -49,11 +49,18 @@ class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Ad
         // Getting element from friend list at this position
         val element = diceRollList[position]
 
-        //Background colors of the list
-        val colours = intArrayOf(
-                Color.parseColor("#E3E3E3"),
-                Color.parseColor("#CCCCCC")
-        )
+        val colours = ArrayList<Int>()
+
+        if(!hasPlayers)
+        {
+            //Background colors of the list
+            colours.add(Color.parseColor("#E3E3E3"))
+            colours.add(Color.parseColor("#CCCCCC"))
+        }
+        else if(hasPlayers)
+        {
+            colours.add(Color.parseColor(element.player!!.color))
+        }
 
         // Updating the text of the views in the cell view with this elements info
         val time: String = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(element.date) + ": "
@@ -79,8 +86,16 @@ class RecycleAdapter(private val dices: ArrayList<BEDiceRoll>) : RecyclerView.Ad
             holder.gridLayout.addView(imgView)
         }
 
-        //Sets the background colors
-        holder.itemView.setBackgroundColor(colours[position % colours.size])
+        if(hasPlayers)
+        {
+            holder.itemView.setBackgroundColor(colours[0])
+        }
+        else
+        {
+            //Sets the background colors
+            holder.itemView.setBackgroundColor(colours[position % colours.size])
+        }
+
     }
 
     override fun getItemCount(): Int {

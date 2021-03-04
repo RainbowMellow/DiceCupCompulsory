@@ -12,4 +12,6 @@
     <color name="lightgrey">#FAFAFA</color>
     <color name="lighterblue">#8FA2FF</color>
     <color name="lightblue">#6F87FF</color>
+    <color name="purple">#8000FF</color>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.example.dicecupcompulsory.GUI.Main
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.dicecupcompulsory.R
 import java.util.*
 import kotlin.collections.ArrayList
 import com.example.dicecupcompulsory.Model.BEDiceRoll
+import com.example.dicecupcompulsory.Model.BEPlayer
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.Serializable
 
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
     var totalDices: Int = 2
     val firstList = arrayListOf(1,1,1,1,1,1,1)
     var currentDices = ArrayList<Int>()
+    var hasPlayers : Boolean = false
+    var playerOne = BEPlayer("Player1", "color")
+    var playerTwo = BEPlayer("Player2", "color")
+    var currentPlayer = playerOne
 
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -55,17 +61,52 @@ class MainActivity : AppCompatActivity() {
 
             updateDiceCount()
         }
-        else {
-            //Sets the first dices
-            for (i in 1..totalDices)
+        else if (intent.extras != null) {
+            val extras: Bundle = intent.extras!!
+            val players = extras.getBoolean("hasPlayers")
+
+            hasPlayers = players
+
+            if(hasPlayers)
             {
-                currentDices.add(1)
+                val firstPlayer = extras.getSerializable("playerOne") as BEPlayer
+                val secondPlayer = extras.getSerializable("playerTwo") as BEPlayer
+                val playerOneStarts = extras.getBoolean("playerOneStarts")
+
+                playerOne = firstPlayer
+                playerTwo = secondPlayer
+
+                if(playerOneStarts)
+                {
+                    currentPlayer = playerOne
+                }
+                else if(!playerOneStarts)
+                {
+                    currentPlayer = playerTwo
+                }
+
+                val playerText = "Your turn " + currentPlayer.name + "!"
+                tvPlayerText.text = playerText
+
+                if(hasPlayers)
+                {
+                    tvPlayerText.setTextColor(Color.parseColor(currentPlayer.color))
+                }
             }
-
-            createDices(totalDices, firstList)
-
-            updateDiceCount()
+            else
+            {
+                tvPlayerText.visibility = View.INVISIBLE
+            }
         }
+        //Sets the first dices
+        for (i in 1..totalDices)
+        {
+            currentDices.add(1)
+        }
+
+        createDices(totalDices, firstList)
+
+        updateDiceCount()
     }
 
     //Takes an amount and a list of indexes for the picture list and adds them to the main gridlayout
@@ -136,15 +177,42 @@ class MainActivity : AppCompatActivity() {
             currentDices.add(randomNumber)
         }
 
-        //Adds the roll to the history
-        val diceRoll = BEDiceRoll(listOfDiceRolls, Calendar.getInstance().time)
-        history.add(diceRoll)
+        if(!hasPlayers)
+        {
+            //Adds the roll to the history
+            val diceRoll = BEDiceRoll(null, listOfDiceRolls, Calendar.getInstance().time)
+            history.add(diceRoll)
+        }
+        else if(hasPlayers)
+        {
+            //Adds the roll to the history
+            val diceRoll = BEDiceRoll(currentPlayer, listOfDiceRolls, Calendar.getInstance().time)
+            history.add(diceRoll)
+        }
+
+        if(currentPlayer == playerOne)
+        {
+            currentPlayer = playerTwo
+        }
+        else if(currentPlayer == playerTwo)
+        {
+            currentPlayer = playerOne
+        }
+
+        val playerText = "Your turn " + currentPlayer.name + "!"
+        tvPlayerText.text = playerText
+
+        if(hasPlayers)
+        {
+            tvPlayerText.setTextColor(Color.parseColor(currentPlayer.color))
+        }
     }
 
     //Sends the user and history list to the HistoryActivity
     fun onClickHistory(view: View) {
         val intent = Intent(this, HistoryActivity::class.java)
         intent.putExtra("history", history as Serializable)
+        intent.putExtra("hasPlayers", hasPlayers)
         startActivityForResult(intent, GET_HISTORY)
     }
 
@@ -163,5 +231,9 @@ class MainActivity : AppCompatActivity() {
                 println("History cleared")
             }
         }
+    }
+
+    fun onClickBack(view: View) {
+        finish()
     }
 }

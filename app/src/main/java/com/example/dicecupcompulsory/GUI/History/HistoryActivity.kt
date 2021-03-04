@@ -17,6 +17,7 @@ class HistoryActivity : AppCompatActivity() {
     lateinit var diceAdapter : RecycleAdapter
 
     var isClear : Boolean = false
+    var hasPlayers : Boolean = false
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putSerializable("history", diceList)
@@ -40,7 +41,9 @@ class HistoryActivity : AppCompatActivity() {
         else if (intent.extras != null) {
             val extras: Bundle = intent.extras!!
             val history = extras.getSerializable("history") as ArrayList<BEDiceRoll>
+            val players = extras.getBoolean("hasPlayers")
 
+            hasPlayers = players
             diceList = history
         }
 
@@ -61,7 +64,7 @@ class HistoryActivity : AppCompatActivity() {
         //Sets the items in the recycler to have a fixed size
         recycler.setHasFixedSize(true)
 
-        diceAdapter = RecycleAdapter(diceList)
+        diceAdapter = RecycleAdapter(diceList, hasPlayers)
         recycler.adapter = diceAdapter
 
     }

@@ -2,5 +2,16 @@
     <string name="app_name">DiceCupCompulsory</string>
     <string name="clear">Clear</string>
     <string name="roll">Roll</string>
+    <string name="play">Play</string>
     <string name="timeText">Time</string>
+    <string name="one">Player 1:</string>
+    <string name="two">Player 2:</string>
+    <string name="playerInfo">Player info:</string>
+    <string name="hintPlayers">Input player name</string>
+    <string name="whoStarts">Choose who starts:</string>
+    <string name="playersOrNot">Play with players?</string>
+    <string name="players">With Players</string>
+    <string name="noPlayers">Without Players</string>
+    <string name="welcome">Welcome to the Dice Cup App!</string>
+    <string name="player">Player</string>
 </resources>

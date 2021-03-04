@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiceCupCompulsory">
-        <activity android:name=".GUI.Main.MainActivity">
+        <activity android:name=".GUI.Start.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".GUI.History.HistoryActivity"/>
+        <activity android:name=".GUI.Main.MainActivity"/>
     </application>
 
 </manifest>
